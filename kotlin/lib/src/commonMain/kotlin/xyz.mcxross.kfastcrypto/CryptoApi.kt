@@ -1,4 +1,4 @@
-package xyz.mcxross.ktfastcrypto
+package xyz.mcxross.kfastcrypto
 
 interface CryptoApi {
     fun keygen(): Keypair

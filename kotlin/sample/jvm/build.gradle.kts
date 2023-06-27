@@ -3,7 +3,7 @@ plugins {
   application
 }
 
-group = "xyz.mcxross.ktfastcrypto"
+group = "xyz.mcxross.kfastcrypto"
 
 version = "0.1.0"
 

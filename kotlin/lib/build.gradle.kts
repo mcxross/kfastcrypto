@@ -1,15 +1,11 @@
-import org.gradle.api.publish.maven.MavenPublication
-import org.gradle.api.tasks.Copy
 import org.gradle.kotlin.dsl.*
-import org.jetbrains.kotlin.util.capitalizeDecapitalize.toLowerCaseAsciiOnly
 
 plugins {
   kotlin("multiplatform") version "1.8.0"
-  kotlin("plugin.serialization") version "1.8.0"
   id("maven-publish")
 }
 
-group = "xyz.mcxross.ktfastcrypto"
+group = "xyz.mcxross.kfastcrypto"
 
 version = "0.1.0"
 
@@ -84,11 +80,11 @@ publishing {
   }
   publications {
     named<MavenPublication>("jvm") {
-      artifactId = "ktfastcrypto-jvm-win"
+      artifactId = "kfastcrypto-jvm-win"
     }
     publishTargets.forEach { (t, u) ->
       create<MavenPublication>("mavenPublication${t}") {
-        artifactId = "ktfastcrypto-${u}"
+        artifactId = "kfastcrypto-${u}"
         from(components["kotlin"])
         artifact(tasks.named("jvmJar"))
       }

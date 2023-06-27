@@ -1,4 +1,4 @@
-package xyz.mcxross.ktfastcrypto
+package xyz.mcxross.kfastcrypto
 
 import java.io.File
 import java.io.FileOutputStream

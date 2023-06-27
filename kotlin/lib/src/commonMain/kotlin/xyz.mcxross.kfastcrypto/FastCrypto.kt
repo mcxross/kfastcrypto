@@ -1,4 +1,4 @@
-package xyz.mcxross.ktfastcrypto
+package xyz.mcxross.kfastcrypto
 
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.Json
