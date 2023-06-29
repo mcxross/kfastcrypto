@@ -1,4 +1,3 @@
-
 rootProject.name = "kfastcrypto"
 
-include(":kotlin:lib",":kotlin:sample")
+include(":kotlin:lib", ":kotlin:sample:jvm")

@@ -1,7 +1,6 @@
-import org.gradle.kotlin.dsl.*
-
 plugins {
   kotlin("multiplatform") version "1.8.0"
+  kotlin("plugin.serialization") version "1.8.0"
   id("maven-publish")
 }
 
@@ -21,16 +20,18 @@ kotlin {
   val hostOs = System.getProperty("os.name")
   val isMingwX64 = hostOs.startsWith("Windows")
   val nativeTarget =
-      when {
-        hostOs == "Mac OS X" -> macosX64("native")
-        hostOs == "Linux" -> linuxX64("native")
-        isMingwX64 -> mingwX64("native")
-        else -> throw GradleException("Host OS is not supported in Kotlin/Native.")
-      }
+    when {
+      hostOs == "Mac OS X" -> macosX64("native")
+      hostOs == "Linux" -> linuxX64("native")
+      isMingwX64 -> mingwX64("native")
+      else -> throw GradleException("Host OS is not supported in Kotlin/Native.")
+    }
 
   sourceSets {
     val commonMain by getting {
-      dependencies { implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.5.0") }
+      dependencies {
+        implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.5.0")
+      }
     }
     val commonTest by getting { dependencies { implementation(kotlin("test")) } }
     val jvmMain by getting
@@ -50,20 +51,20 @@ val publishTargets =
     .associate { (target, platform) -> target.capitalize() to platform }
 
 val archs = listOf("amd64", "aarch64")
-val platformTargets = listOf("win", "linux" , "mac")
+val platformTargets = listOf("win", "linux", "mac")
 
 val copyNativeLibs by
-    tasks.register<Copy>("copyNativeLibs") {
-      val rootDir = project.rootDir
-      platformTargets.forEach {
-        archs.forEach { arch ->
-          from("$rootDir/lib/${it}/${arch}") {
-            include("**/*")
-          }
-        }
-        into("build/classes/kotlin/main/lib")
+tasks.register<Copy>("copyNativeLibs") {
+  val rootDir = project.rootDir
+  platformTargets.forEach {
+    archs.forEach { arch ->
+      from("$rootDir/lib/${it}/${arch}") {
+        include("**/*")
       }
     }
+    into("build/classes/kotlin/main/lib")
+  }
+}
 
 val publishingConfigurations = configurations.create("publishingConfigurations")
 

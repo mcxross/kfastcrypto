@@ -1,4 +1,4 @@
-use crate::key::Keypair;
+use crate::model::Keypair;
 use fastcrypto::vrf::ecvrf::ECVRFKeyPair;
 use fastcrypto::vrf::VRFKeyPair;
 use jni::objects::JClass;
@@ -7,7 +7,6 @@ use jni::JNIEnv;
 use rand::thread_rng;
 use std::fmt::{Display, Formatter};
 use std::io::{Error, ErrorKind};
-use crate::model::Keypair;
 
 pub(crate) fn keygen() -> Result<Keypair, Error> {
     let keypair = ECVRFKeyPair::generate(&mut thread_rng());
@@ -27,7 +26,7 @@ pub(crate) fn keygen() -> Result<Keypair, Error> {
 
 #[allow(non_snake_case)]
 #[no_mangle]
-pub extern "system" fn Java_xyz_mcxross_ktfastcrypto_FastCryptoApi_ecvrf_generateKeypair<'local>(
+pub extern "system" fn Java_xyz_mcxross_kfastcrypto_FastCryptoApi_generateKeypair<'local>(
     mut env: JNIEnv<'local>,
     class: JClass<'local>,
 ) -> jstring {
