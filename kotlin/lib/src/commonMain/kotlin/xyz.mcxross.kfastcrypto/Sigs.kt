@@ -3,9 +3,7 @@ package xyz.mcxross.kfastcrypto
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.serializer
-
-@Serializable
-data class Keypair(val publicKey: String, val privateKey: String)
+import xyz.mcxross.kfastcrypto.model.Keypair
 
 object Sigs : Crypto {
 

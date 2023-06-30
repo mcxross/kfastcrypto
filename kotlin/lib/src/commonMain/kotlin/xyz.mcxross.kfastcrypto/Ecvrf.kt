@@ -2,6 +2,8 @@ package xyz.mcxross.kfastcrypto
 
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.serializer
+import xyz.mcxross.kfastcrypto.model.Keypair
+import xyz.mcxross.kfastcrypto.model.Proof
 
 object Ecvrf : Crypto {
 
@@ -9,9 +11,8 @@ object Ecvrf : Crypto {
 
   override fun keygen(): Keypair = format.decodeFromString(serializer(), generateKeypair())
 
-  fun prove() {
-    TODO("Not yet implemented")
-  }
+  fun prove(input: String, secretKey: String): Proof =
+    format.decodeFromString(serializer(), xyz.mcxross.kfastcrypto.prove(input, secretKey))
 
   override fun verify(output: String, proof: String, input: String, publicKey: String) {
     TODO("Not yet implemented")

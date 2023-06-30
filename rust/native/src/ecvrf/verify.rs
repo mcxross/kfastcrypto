@@ -1,5 +1,8 @@
 use fastcrypto::vrf::ecvrf::{ECVRFProof, ECVRFPublicKey};
 use fastcrypto::vrf::VRFProof;
+use jni::objects::{JBooleanArray, JClass};
+use jni::sys::{jarray, jboolean, jclass};
+use jni::JNIEnv;
 use std::io::{Error, ErrorKind};
 
 fn verify(output: String, proof: String, input: String, public_key: String) -> Result<bool, Error> {
@@ -29,4 +32,12 @@ fn verify(output: String, proof: String, input: String, public_key: String) -> R
         return Ok(true);
     }
     Err(Error::new(ErrorKind::Other, "Proof is not correct."))
+}
+
+#[allow(non_snake_case)]
+#[no_mangle]
+pub extern "system" fn Java_xyz_mcxross_kfastcrypto_FastCryptoApi_verify<'local>(
+    mut env: JNIEnv<'local>,
+    class: JClass<'local>,
+) {
 }

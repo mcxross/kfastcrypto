@@ -1,4 +1,4 @@
-use crate::model::Keypair;
+use crate::model::key_pair::Keypair;
 use fastcrypto::vrf::ecvrf::ECVRFKeyPair;
 use fastcrypto::vrf::VRFKeyPair;
 use jni::objects::JClass;
@@ -39,7 +39,9 @@ pub extern "system" fn Java_xyz_mcxross_kfastcrypto_FastCryptoApi_generateKeypai
             output.into_raw()
         }
         Err(e) => {
-            let output = env.new_string("").expect("Couldn't create java string!");
+            let output = env
+                .new_string(e.to_string())
+                .expect("Couldn't create java string!");
             output.into_raw()
         }
     }

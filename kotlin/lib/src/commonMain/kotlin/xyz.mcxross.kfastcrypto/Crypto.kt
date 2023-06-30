@@ -1,5 +1,7 @@
 package xyz.mcxross.kfastcrypto
 
+import xyz.mcxross.kfastcrypto.model.Keypair
+
 interface Crypto {
   fun keygen(): Keypair
 

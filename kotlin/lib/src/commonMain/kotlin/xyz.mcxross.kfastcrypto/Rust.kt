@@ -9,6 +9,9 @@ external fun generateKeypair(): String
 
 external fun sign()
 
-external fun prove()
+external fun prove(
+  input: String,
+  secretKey: String,
+): String
 
 external fun verify()
