@@ -14,8 +14,7 @@ object Ecvrf : Crypto {
   fun prove(input: String, secretKey: String): Proof =
     format.decodeFromString(serializer(), xyz.mcxross.kfastcrypto.prove(input, secretKey))
 
-  override fun verify(output: String, proof: String, input: String, publicKey: String) {
-    TODO("Not yet implemented")
-  }
+  override fun verify(output: String, proof: String, input: String, publicKey: String): Boolean =
+    xyz.mcxross.kfastcrypto.verify(output, proof, input, publicKey)
 
 }

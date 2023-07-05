@@ -14,4 +14,9 @@ external fun prove(
   secretKey: String,
 ): String
 
-external fun verify()
+external fun verify(
+  output: String,
+  proof: String,
+  input: String,
+  publicKey: String
+): Boolean
