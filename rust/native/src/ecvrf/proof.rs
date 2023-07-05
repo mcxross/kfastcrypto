@@ -33,16 +33,16 @@ fn prove(input: String, secret_key: String) -> Result<Proof, Error> {
 #[no_mangle]
 pub extern "system" fn Java_xyz_mcxross_kfastcrypto_FastCryptoApi_prove<'local>(
     mut env: JNIEnv<'local>,
-    class: JClass<'local>,
+    _class: JClass<'local>,
     input: JString<'local>,
-    secretkey: JString<'local>,
+    secret_key: JString<'local>,
 ) -> jstring {
     let input = env
         .get_string(&input)
         .expect("Couldn't get java string!")
         .into();
     let secrete_key = env
-        .get_string(&secretkey)
+        .get_string(&secret_key)
         .expect("Couldn't get java string!")
         .into();
 

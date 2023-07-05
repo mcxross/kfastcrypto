@@ -5,7 +5,6 @@ use jni::objects::JClass;
 use jni::sys::jstring;
 use jni::JNIEnv;
 use rand::thread_rng;
-use std::fmt::{Display, Formatter};
 use std::io::{Error, ErrorKind};
 
 pub(crate) fn keygen() -> Result<Keypair, Error> {
@@ -28,7 +27,7 @@ pub(crate) fn keygen() -> Result<Keypair, Error> {
 #[no_mangle]
 pub extern "system" fn Java_xyz_mcxross_kfastcrypto_FastCryptoApi_generateKeypair<'local>(
     mut env: JNIEnv<'local>,
-    class: JClass<'local>,
+    _class: JClass<'local>,
 ) -> jstring {
     let result = keygen();
     match result {

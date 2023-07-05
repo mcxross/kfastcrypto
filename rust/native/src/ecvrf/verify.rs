@@ -1,7 +1,7 @@
 use fastcrypto::vrf::ecvrf::{ECVRFProof, ECVRFPublicKey};
 use fastcrypto::vrf::VRFProof;
-use jni::objects::{JBooleanArray, JClass, JString};
-use jni::sys::{jarray, jboolean, jclass, JNI_FALSE, JNI_TRUE};
+use jni::objects::{JClass, JString};
+use jni::sys::{jboolean, JNI_FALSE, JNI_TRUE};
 use jni::JNIEnv;
 use std::io::{Error, ErrorKind};
 
@@ -39,7 +39,7 @@ fn verify(output: String, proof: String, input: String, public_key: String) -> R
 #[no_mangle]
 pub extern "system" fn Java_xyz_mcxross_kfastcrypto_FastCryptoApi_verify<'local>(
     mut env: JNIEnv<'local>,
-    class: JClass<'local>,
+    _class: JClass<'local>,
     output: JString<'local>,
     proof: JString<'local>,
     input: JString<'local>,
