@@ -7,6 +7,8 @@ import kotlin.jvm.JvmName
 
 external fun generateKeypair(): String
 
+external fun sigsGenerateKeypair(scheme: String, seed: String) : String
+
 external fun sign()
 
 external fun prove(

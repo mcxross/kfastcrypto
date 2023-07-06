@@ -1,26 +1,27 @@
 package xyz.mcxross.kfastcrypto
 
-import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.serializer
 import xyz.mcxross.kfastcrypto.model.Keypair
+import xyz.mcxross.kfastcrypto.model.SignatureScheme
 
-object Sigs : Crypto {
+object Sigs {
 
   private val format = Json { prettyPrint = true }
-
-  override fun keygen(): Keypair = format.decodeFromString(serializer(), generateKeypair())
+  fun keygen(scheme: SignatureScheme, seed: String = ""): Keypair =
+    format.decodeFromString(serializer(), sigsGenerateKeypair(scheme.value(), seed))
 
   fun sign(
     input: String,
   ) {
   }
 
-  override fun verify(
+  fun verify(
     output: String,
     proof: String,
     input: String,
     publicKey: String,
-  ) {
+  ): Boolean {
+    return true
   }
 }
