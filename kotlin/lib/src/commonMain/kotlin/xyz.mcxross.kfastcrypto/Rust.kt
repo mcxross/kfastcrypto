@@ -22,3 +22,6 @@ external fun verify(
   input: String,
   publicKey: String
 ): Boolean
+
+external fun base64ToHex(bytes: String) : String
+external fun hexToBase64(bytes: String): String
