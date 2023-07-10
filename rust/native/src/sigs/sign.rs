@@ -6,14 +6,12 @@ use fastcrypto::error::FastCryptoError;
 use fastcrypto::secp256k1::{Secp256k1KeyPair, Secp256k1PrivateKey};
 use fastcrypto::secp256r1::{Secp256r1KeyPair, Secp256r1PrivateKey};
 use fastcrypto::traits::{KeyPair, RecoverableSigner, Signer, ToFromBytes};
+use jni::objects::{JClass, JString};
+use jni::sys::jstring;
+use jni::JNIEnv;
 use std::str::FromStr;
 
-
-pub(crate) fn sign(
-    msg: String,
-    secret_key: String,
-    scheme: String,
-) -> Result<Sign, FastCryptoError> {
+fn sign(msg: String, secret_key: String, scheme: String) -> Result<Sign, FastCryptoError> {
     let sk = Hex::decode(&secret_key).map_err(|_| FastCryptoError::InvalidInput)?;
     let msg = Hex::decode(&msg).map_err(|_| FastCryptoError::InvalidInput)?;
 
@@ -74,4 +72,46 @@ pub(crate) fn sign(
         Err(_) => return Err(FastCryptoError::InvalidInput),
     };
     Ok(Sign { sig, pub_key: pk })
+}
+
+#[allow(non_snake_case)]
+#[no_mangle]
+pub extern "system" fn Java_xyz_mcxross_kfastcrypto_FastCryptoApi_sigsSign<'local>(
+    mut env: JNIEnv<'local>,
+    _class: JClass<'local>,
+    msg: JString<'local>,
+    secret_key: JString<'local>,
+    scheme: JString<'local>,
+) -> jstring {
+    let msg = env
+        .get_string(&msg)
+        .expect("Couldn't get java string <msg>!")
+        .into();
+
+    let sk = env
+        .get_string(&secret_key)
+        .expect("Couldn't get java string <secret_key>!")
+        .into();
+
+    let scheme = env
+        .get_string(&scheme)
+        .expect("Couldn't get java string <scheme>!")
+        .into();
+
+    let result = sign(msg, sk, scheme);
+
+    match result {
+        Ok(res) => {
+            let output = env
+                .new_string(format!("{}", res))
+                .expect("Couldn't create java string!");
+            output.into_raw()
+        }
+        Err(e) => {
+            let output = env
+                .new_string(e.to_string())
+                .expect("Couldn't create java string!");
+            output.into_raw()
+        }
+    }
 }
