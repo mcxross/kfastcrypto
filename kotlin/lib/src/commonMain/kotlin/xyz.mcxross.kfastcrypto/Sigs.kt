@@ -12,16 +12,13 @@ object Sigs {
     format.decodeFromString(serializer(), sigsGenerateKeypair(scheme.value(), seed))
 
   fun sign(
-    input: String,
-  ) {
-  }
+    msg: String, sk: String, scheme: String
+  ): String = sigsSign(msg, sk, scheme)
 
   fun verify(
-    output: String,
-    proof: String,
-    input: String,
-    publicKey: String,
-  ): Boolean {
-    return true
-  }
+    msg: String,
+    sig: String,
+    pk: String,
+    scheme: String,
+  ): Boolean = sigsVerify(msg, sig, pk, scheme)
 }
