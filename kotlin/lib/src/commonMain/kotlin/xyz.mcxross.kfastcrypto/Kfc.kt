@@ -5,10 +5,13 @@ object Kfc {
     loadNativeLib()
   }
 
-  fun sigs(): Sigs = Sigs
+  val sigs: Sigs
+    get() = Sigs
 
-  fun ecvrf(): Ecvrf = Ecvrf
+  val ecvrf: Ecvrf
+    get() = Ecvrf
 
-  fun encode(): Encode = Encode
+  val encode: Encode
+    get() = Encode
 
 }
