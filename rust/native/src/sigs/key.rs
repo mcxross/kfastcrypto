@@ -1,4 +1,4 @@
-use crate::{model::key_pair::Keypair, sigs::sig_scheme::SignatureScheme};
+use crate::model::{key_pair::Keypair, scheme::SignatureScheme};
 use fastcrypto::{
     ed25519::Ed25519KeyPair,
     encoding::{Encoding, Hex},
@@ -12,10 +12,7 @@ use jni::sys::jstring;
 use jni::JNIEnv;
 use rand::rngs::StdRng;
 use rand::{Rng, SeedableRng};
-use std::{
-    io::{Error, ErrorKind},
-    str::FromStr,
-};
+use std::str::FromStr;
 
 pub(crate) fn keygen(scheme: String, seed: String) -> Result<Keypair, FastCryptoError> {
     // Check if the seed string is empty

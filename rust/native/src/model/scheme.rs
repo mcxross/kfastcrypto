@@ -14,7 +14,7 @@ pub enum SignatureScheme {
 }
 
 impl FromStr for SignatureScheme {
-    type Err = std::io::Error;
+    type Err = Error;
 
     fn from_str(s: &str) -> Result<Self, Self::Err> {
         match s {

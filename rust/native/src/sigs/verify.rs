@@ -1,4 +1,4 @@
-use crate::sigs::sig_scheme::SignatureScheme;
+use crate::model::scheme::SignatureScheme;
 use fastcrypto::ed25519::{Ed25519PublicKey, Ed25519Signature};
 use fastcrypto::encoding::{Encoding, Hex};
 use fastcrypto::error::FastCryptoError;
