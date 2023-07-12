@@ -5,13 +5,10 @@ object Kfc {
     loadNativeLib()
   }
 
-  val sigs: Sigs
-    get() = Sigs
+  val sigs: Sigs by lazy { Sigs }
 
-  val ecvrf: Ecvrf
-    get() = Ecvrf
+  val ecvrf: Ecvrf by lazy { Ecvrf }
 
-  val encode: Encode
-    get() = Encode
+  val encode: Encode by lazy { Encode }
 
 }
