@@ -19,13 +19,13 @@ kotlin {
 
   val hostOs = System.getProperty("os.name")
   val isMingwX64 = hostOs.startsWith("Windows")
-  val nativeTarget =
-    when {
-      hostOs == "Mac OS X" -> macosX64("native")
-      hostOs == "Linux" -> linuxX64("native")
-      isMingwX64 -> mingwX64("native")
-      else -> throw GradleException("Host OS is not supported in Kotlin/Native.")
-    }
+
+  when {
+    hostOs == "Mac OS X" -> macosX64("native")
+    hostOs == "Linux" -> linuxX64("native")
+    isMingwX64 -> mingwX64("native")
+    else -> throw GradleException("Host OS is not supported in Kotlin/Native.")
+  }
 
   sourceSets {
     val commonMain by getting {
@@ -55,15 +55,8 @@ val platformTargets = listOf("win", "linux", "mac")
 
 val copyNativeLibs by
 tasks.register<Copy>("copyNativeLibs") {
-  val rootDir = project.rootDir
-  platformTargets.forEach {
-    archs.forEach { arch ->
-      from("$rootDir/lib/${it}/${arch}") {
-        include("**/*")
-      }
-    }
-    into("build/classes/kotlin/main/lib")
-  }
+  from("${project.rootDir}/lib")
+  into("build/classes/kotlin/main/lib")
 }
 
 val publishingConfigurations = configurations.create("publishingConfigurations")
@@ -79,21 +72,11 @@ publishing {
       }
     }
   }
-  publications {
-    named<MavenPublication>("jvm") {
-      artifactId = "kfastcrypto-jvm-win"
-    }
-    publishTargets.forEach { (t, u) ->
-      create<MavenPublication>("mavenPublication${t}") {
-        artifactId = "kfastcrypto-${u}"
-        from(components["kotlin"])
-        artifact(tasks.named("jvmJar"))
-      }
-    }
-  }
 }
 
 tasks.named<Jar>("jvmJar") {
   dependsOn(copyNativeLibs)
-  into("lib") { from("build/classes/kotlin/main/lib") }
+  into("lib") {
+    from("build/classes/kotlin/main/lib")
+  }
 }
