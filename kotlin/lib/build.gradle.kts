@@ -17,6 +17,11 @@ kotlin {
     testRuns["test"].executionTask.configure { useJUnitPlatform() }
   }
 
+  js {
+    browser {}
+    nodejs {}
+  }
+
   val hostOs = System.getProperty("os.name")
   val isMingwX64 = hostOs.startsWith("Windows")
 
@@ -36,6 +41,8 @@ kotlin {
     val commonTest by getting { dependencies { implementation(kotlin("test")) } }
     val jvmMain by getting
     val jvmTest by getting
+    val jsMain by getting
+    val jsTest by getting
     val nativeMain by getting
     val nativeTest by getting
   }

@@ -11,7 +11,7 @@ import java.io.FileOutputStream
  * @throws Exception if the operating system is not supported or the native library
  * cannot be loaded.
  */
-actual fun loadNativeLib() {
+fun loadNativeLib() {
    val os = System.getProperty("os.name")
    val extension = when {
       os.startsWith("Windows") -> ".dll"
