@@ -22,7 +22,7 @@ kotlin {
       kotlin.srcDir("src/main/kotlin")
       resources.srcDir("src/main/res")
       dependencies {
-
+        implementation(project(":kotlin:kfastcrypto"))
       }
     }
   }

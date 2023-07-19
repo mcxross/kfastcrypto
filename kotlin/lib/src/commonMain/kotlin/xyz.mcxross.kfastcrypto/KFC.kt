@@ -1,3 +1,3 @@
 package xyz.mcxross.kfastcrypto
 
-expect object Kfc
+expect object KFC

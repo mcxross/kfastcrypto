@@ -1,6 +1,6 @@
 package xyz.mcxross.kfastcrypto
 
-actual object Kfc {
+actual object KFC {
 
     init {
       loadNativeLib()
