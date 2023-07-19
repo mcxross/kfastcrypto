@@ -1,3 +1,5 @@
+val kotlinWrappersVersion = "1.0.0-pre.598"
+
 plugins {
   kotlin("multiplatform") version "1.8.0"
   kotlin("plugin.serialization") version "1.8.0"
@@ -41,7 +43,12 @@ kotlin {
     val commonTest by getting { dependencies { implementation(kotlin("test")) } }
     val jvmMain by getting
     val jvmTest by getting
-    val jsMain by getting
+    val jsMain by getting {
+      dependencies {
+        implementation(enforcedPlatform("org.jetbrains.kotlin-wrappers:kotlin-wrappers-bom:$kotlinWrappersVersion"))
+        implementation("org.jetbrains.kotlin-wrappers:kotlin-web")
+      }
+    }
     val jsTest by getting
     val nativeMain by getting
     val nativeTest by getting
