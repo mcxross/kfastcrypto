@@ -999,6 +999,16 @@ dependencies = [
 ]
 
 [[package]]
+name = "kfc-core"
+version = "0.1.0"
+dependencies = [
+ "bincode",
+ "fastcrypto",
+ "hex",
+ "rand",
+]
+
+[[package]]
 name = "lazy_static"
 version = "1.4.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -1325,11 +1335,8 @@ dependencies = [
 name = "rust"
 version = "0.1.0"
 dependencies = [
- "bincode",
- "fastcrypto",
- "hex",
  "jni",
- "rand",
+ "kfc-core",
 ]
 
 [[package]]
@@ -1772,13 +1779,10 @@ checksum = "9c8d87e72b64a3b4db28d11ce29237c246188f4f51057d65a7eab63b7987e423"
 name = "wasm"
 version = "0.1.0"
 dependencies = [
- "bincode",
  "cc",
  "console_error_panic_hook",
  "fastcrypto",
  "getrandom",
- "hex",
- "rand",
  "wasm-bindgen",
  "wasm-bindgen-test",
  "wee_alloc",
