@@ -4,3 +4,6 @@ members = [
     "native",
     "wasm",
 ]
+
+[workspace.dependencies]
+fastcrypto = { git = "https://github.com/MystenLabs/fastcrypto.git", rev = "c412b86", features = ["copy_key"] }
