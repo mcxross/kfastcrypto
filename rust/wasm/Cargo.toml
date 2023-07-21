@@ -17,6 +17,7 @@ getrandom = { version = "0.2.8", features = ["js"] }
 cc = "1.0"
 console_error_panic_hook = { version = "0.1.6", optional = true }
 wee_alloc = { version = "0.4.5", optional = true }
+js-sys = "0.3.64"
 
 [dev-dependencies]
 wasm-bindgen-test = "0.3.13"
