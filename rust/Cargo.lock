@@ -1781,8 +1781,8 @@ version = "0.1.0"
 dependencies = [
  "cc",
  "console_error_panic_hook",
- "fastcrypto",
  "getrandom",
+ "kfc-core",
  "wasm-bindgen",
  "wasm-bindgen-test",
  "wee_alloc",
