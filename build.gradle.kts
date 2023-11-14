@@ -1,4 +1,8 @@
-plugins { kotlin("multiplatform") version "1.8.0" apply false }
+plugins {
+  kotlin("multiplatform") apply false
+  kotlin("plugin.serialization") apply false
+  id("com.android.library") apply false
+}
 
 group = "xyz.mcxross.kfastcrypto"
 
