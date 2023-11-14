@@ -1,11 +1,11 @@
 use jni::objects::{JClass, JString};
 use jni::sys::jstring;
 use jni::JNIEnv;
-use kfc_core::encode;
+use fc_core::encode;
 
 #[allow(non_snake_case)]
 #[no_mangle]
-pub extern "system" fn Java_xyz_mcxross_kfastcrypto_FastCryptoApi_base64ToHex<'local>(
+pub extern "system" fn Java_xyz_mcxross_kfc_FastCryptoApi_base64ToHex<'local>(
     mut env: JNIEnv<'local>,
     _class: JClass<'local>,
     byte: JString<'local>,
@@ -35,7 +35,7 @@ pub extern "system" fn Java_xyz_mcxross_kfastcrypto_FastCryptoApi_base64ToHex<'l
 
 #[allow(non_snake_case)]
 #[no_mangle]
-pub extern "system" fn Java_xyz_mcxross_kfastcryto_FastCryptoApi_hexToBase64<'local>(
+pub extern "system" fn Java_xyz_mcxross_kfc_FastCryptoApi_hexToBase64<'local>(
     mut env: JNIEnv<'local>,
     _jobject: JClass<'local>,
     byte: JString<'local>,
@@ -65,25 +65,25 @@ pub extern "system" fn Java_xyz_mcxross_kfastcryto_FastCryptoApi_hexToBase64<'lo
 
 #[cfg(test)]
 mod tests {
-    use crate::encode;
+    use fc_core::encode::{base64_to_hex, hex_to_base64};
 
     #[test]
     fn test_encode_base64_to_hex() {
         // The correctness of the output is tested in the integration tests in fastcrypto-cli/tests/encode_cli.rs.
         let base64 = "SGVsbG8gV29ybGQh";
-        assert!(encode::base64_to_hex(base64.to_string()).is_ok());
+        assert!(base64_to_hex(base64.to_string()).is_ok());
 
         let invalid_base64 = "SGVsbG8gV29ybGQ";
-        assert!(encode::base64_to_hex(invalid_base64.to_string()).is_err());
+        assert!(base64_to_hex(invalid_base64.to_string()).is_err());
     }
 
     #[test]
     fn test_encode_hex_to_base64() {
         // The correctness of the output is tested in the integration tests in fastcrypto-cli/tests/encode_cli.rs.
         let hex = "48656c6c6f20576f726c6421";
-        assert!(encode::hex_to_base64(hex.to_string()).is_ok());
+        assert!(hex_to_base64(hex.to_string()).is_ok());
 
         let invalid_hex = "48656c6c6f20576f726c642";
-        assert!(encode::hex_to_base64(invalid_hex.to_string()).is_err());
+        assert!(hex_to_base64(invalid_hex.to_string()).is_err());
     }
 }

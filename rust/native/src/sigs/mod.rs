@@ -2,11 +2,11 @@ use jni::objects::{JClass, JString};
 use jni::sys::jstring;
 use jni::sys::{jboolean, JNI_FALSE, JNI_TRUE};
 use jni::JNIEnv;
-use kfc_core::sigs;
+use fc_core::sigs;
 
 #[allow(non_snake_case)]
 #[no_mangle]
-pub extern "system" fn Java_xyz_mcxross_kfastcrypto_FastCryptoApi_sigsGenerateKeypair<'local>(
+pub extern "system" fn Java_xyz_mcxross_kfc_FastCryptoApi_sigsGenerateKeypair<'local>(
     mut env: JNIEnv<'local>,
     _class: JClass<'local>,
     scheme: JString<'local>,
@@ -42,7 +42,7 @@ pub extern "system" fn Java_xyz_mcxross_kfastcrypto_FastCryptoApi_sigsGenerateKe
 
 #[allow(non_snake_case)]
 #[no_mangle]
-pub extern "system" fn Java_xyz_mcxross_kfastcrypto_FastCryptoApi_sigsSign<'local>(
+pub extern "system" fn Java_xyz_mcxross_kfc_FastCryptoApi_sigsSign<'local>(
     mut env: JNIEnv<'local>,
     _class: JClass<'local>,
     msg: JString<'local>,
@@ -84,7 +84,7 @@ pub extern "system" fn Java_xyz_mcxross_kfastcrypto_FastCryptoApi_sigsSign<'loca
 
 #[allow(non_snake_case)]
 #[no_mangle]
-pub extern "system" fn Java_xyz_mcxross_kfastcrypto_FastCryptoApi_sigsVerify<'local>(
+pub extern "system" fn Java_xyz_mcxross_kfc_FastCryptoApi_sigsVerify<'local>(
     mut env: JNIEnv<'local>,
     _class: JClass<'local>,
     msg: JString<'local>,

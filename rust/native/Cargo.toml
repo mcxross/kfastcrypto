@@ -1,5 +1,5 @@
 [package]
-name = "rust"
+name = "native"
 version = "0.1.0"
 edition = "2021"
 
@@ -8,5 +8,6 @@ name = "fastcrypto"
 crate-type = ["cdylib"]
 
 [dependencies]
-kfc-core = {path = "../core"}
+fastcrypto.workspace = true
+fc-core = {path = "../core"}
 jni = "0.21.0"

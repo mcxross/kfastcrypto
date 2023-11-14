@@ -3,11 +3,11 @@ use jni::objects::JString;
 use jni::sys::jstring;
 use jni::sys::{jboolean, JNI_FALSE, JNI_TRUE};
 use jni::JNIEnv;
-use kfc_core::ecvrf;
+use fc_core::ecvrf;
 
 #[allow(non_snake_case)]
 #[no_mangle]
-pub extern "system" fn Java_xyz_mcxross_kfastcrypto_FastCryptoApi_generateKeypair<'local>(
+pub extern "system" fn Java_xyz_mcxross_kfc_FastCryptoApi_generateKeypair<'local>(
     mut env: JNIEnv<'local>,
     _class: JClass<'local>,
 ) -> jstring {
@@ -30,7 +30,7 @@ pub extern "system" fn Java_xyz_mcxross_kfastcrypto_FastCryptoApi_generateKeypai
 
 #[allow(non_snake_case)]
 #[no_mangle]
-pub extern "system" fn Java_xyz_mcxross_kfastcrypto_FastCryptoApi_prove<'local>(
+pub extern "system" fn Java_xyz_mcxross_kfc_FastCryptoApi_prove<'local>(
     mut env: JNIEnv<'local>,
     _class: JClass<'local>,
     input: JString<'local>,
@@ -65,7 +65,7 @@ pub extern "system" fn Java_xyz_mcxross_kfastcrypto_FastCryptoApi_prove<'local>(
 
 #[allow(non_snake_case)]
 #[no_mangle]
-pub extern "system" fn Java_xyz_mcxross_kfastcrypto_FastCryptoApi_verify<'local>(
+pub extern "system" fn Java_xyz_mcxross_kfc_FastCryptoApi_verify<'local>(
     mut env: JNIEnv<'local>,
     _class: JClass<'local>,
     output: JString<'local>,
