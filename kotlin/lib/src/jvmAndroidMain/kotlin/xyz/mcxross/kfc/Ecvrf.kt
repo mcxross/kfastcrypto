@@ -1,9 +1,9 @@
-package xyz.mcxross.kfastcrypto
+package xyz.mcxross.kfc
 
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.serializer
-import xyz.mcxross.kfastcrypto.model.Keypair
-import xyz.mcxross.kfastcrypto.model.Proof
+import xyz.mcxross.kfc.model.Keypair
+import xyz.mcxross.kfc.model.Proof
 
 actual object Ecvrf {
 
@@ -13,13 +13,13 @@ actual object Ecvrf {
   actual fun prove(
     input: String,
     secretKey: String
-  ): Proof = format.decodeFromString(serializer(), xyz.mcxross.kfastcrypto.prove(input, secretKey))
+  ): Proof = format.decodeFromString(serializer(), xyz.mcxross.kfc.prove(input, secretKey))
 
   actual fun verify(
     output: String,
     proof: String,
     input: String,
     publicKey: String
-  ): Boolean = xyz.mcxross.kfastcrypto.verify(output, proof, input, publicKey)
+  ): Boolean = xyz.mcxross.kfc.verify(output, proof, input, publicKey)
 
 }

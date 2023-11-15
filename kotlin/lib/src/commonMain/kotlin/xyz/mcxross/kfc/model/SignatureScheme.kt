@@ -1,4 +1,4 @@
-package xyz.mcxross.kfastcrypto.model
+package xyz.mcxross.kfc.model
 
 enum class SignatureScheme {
   ED25519 {

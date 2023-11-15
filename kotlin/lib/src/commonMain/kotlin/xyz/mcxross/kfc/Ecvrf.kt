@@ -1,7 +1,7 @@
-package xyz.mcxross.kfastcrypto
+package xyz.mcxross.kfc
 
-import xyz.mcxross.kfastcrypto.model.Keypair
-import xyz.mcxross.kfastcrypto.model.Proof
+import xyz.mcxross.kfc.model.Keypair
+import xyz.mcxross.kfc.model.Proof
 
 expect object Ecvrf {
 

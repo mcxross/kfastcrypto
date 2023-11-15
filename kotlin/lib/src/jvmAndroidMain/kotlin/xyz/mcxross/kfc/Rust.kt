@@ -1,7 +1,7 @@
 /** This file is used as a namespace for all the exported Rust functions. */
 @file:JvmName("FastCryptoApi")
 
-package xyz.mcxross.kfastcrypto
+package xyz.mcxross.kfc
 
 import kotlin.jvm.JvmName
 

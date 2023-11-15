@@ -7,11 +7,14 @@ plugins {
   id("maven-publish")
 }
 
-group = "xyz.mcxross.kfastcrypto"
+group = "xyz.mcxross.kfc"
 
 version = "0.1.0"
 
-repositories { mavenCentral() }
+repositories {
+  mavenCentral()
+  google()
+}
 
 kotlin {
 
@@ -46,6 +49,18 @@ kotlin {
     }
     commonTest.dependencies {
       implementation(kotlin("test"))
+    }
+    val jvmAndroidMain by creating {
+      dependsOn(commonMain.get())
+    }
+    val jvmAndroidTest by creating {
+      dependsOn(commonTest.get())
+    }
+    val androidMain by getting {
+      dependsOn(jvmAndroidMain)
+    }
+    val jvmMain by getting {
+      dependsOn(jvmAndroidMain)
     }
     jsMain.dependencies {
       implementation("org.jetbrains.kotlin-wrappers:kotlin-web")

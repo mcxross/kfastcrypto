@@ -1,4 +1,4 @@
-package xyz.mcxross.kfastcrypto.model
+package xyz.mcxross.kfc.model
 
 import kotlinx.serialization.Serializable
 

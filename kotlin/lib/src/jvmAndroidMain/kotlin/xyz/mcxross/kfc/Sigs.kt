@@ -1,9 +1,9 @@
-package xyz.mcxross.kfastcrypto
+package xyz.mcxross.kfc
 
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.serializer
-import xyz.mcxross.kfastcrypto.model.Keypair
-import xyz.mcxross.kfastcrypto.model.SignatureScheme
+import xyz.mcxross.kfc.model.Keypair
+import xyz.mcxross.kfc.model.SignatureScheme
 
 actual object Sigs {
   private val format = Json { prettyPrint = true }

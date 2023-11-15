@@ -4,7 +4,7 @@ plugins {
   id("com.android.library") apply false
 }
 
-group = "xyz.mcxross.kfastcrypto"
+group = "xyz.mcxross.kfc"
 
 version = "0.1.0"
 
