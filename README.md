@@ -8,22 +8,8 @@ Kfastcrypto (short for Kotlin for Fastcrypto) is a cryptography library exposing
 [![License](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](LICENSE)
 
 # Table of contents
-- [Quick start](#quick-start)
-- [Supported platforms](#supported-platforms)
 - [What's included](#whats-included)
 - [Contribution](#contribution)
-
-## Quick start
-
-## Supported platforms
-
-Currently supported native platforms
-
-| Platform     | Supported |
-|--------------|------------------|
-| Linux X86_64 |          :heavy_check_mark: |
-| macOS X86_64 |          :heavy_check_mark: |
-| minGW X86_64 |          :heavy_check_mark: |
 
 
 ## What's included
